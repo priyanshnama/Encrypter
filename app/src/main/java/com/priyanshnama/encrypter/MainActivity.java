@@ -12,13 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ajwadshaikh.amazingautofitedittext.AmazingAutofitEditText;
 
+import java.util.Objects;
+
 import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
 
 public class MainActivity extends AppCompatActivity {
     private TextView output;
     private AmazingAutofitEditText input;
     private String raw_data, processed_data;
-    private final Encrypter encrypter = new Encrypter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String getRawData() {
-        return input.getText().toString();
+        return Objects.requireNonNull(input.getText()).toString();
     }
 
     public String getProcessedData() {
@@ -43,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void encrypt(View view) {
         raw_data = getRawData();
-        processed_data = encrypter.encrypt(raw_data);
+        processed_data = Encrypter.encrypt(raw_data);
         setProcessedData();
         Toast.makeText(this, "encrypted", Toast.LENGTH_LONG).show();
     }
 
     public void decrypt(View view) {
         raw_data = getRawData();
-        processed_data = encrypter.decrypt(raw_data);
+        processed_data = Encrypter.decrypt(raw_data);
         setProcessedData();
         Toast.makeText(this, "decrypted", Toast.LENGTH_LONG).show();
     }
