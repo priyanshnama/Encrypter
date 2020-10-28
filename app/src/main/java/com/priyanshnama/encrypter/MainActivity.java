@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     public void decrypt(View view) {
         rawDataProcess(false);
     }
-    public void rawDataProcess(boolean encryption)
+    public void rawDataProcess(boolean encryption) //Function to process raw data for encryption or decryption
     {
         raw_data = getRawData();
         if(encryption)

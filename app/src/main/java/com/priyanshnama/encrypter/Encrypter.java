@@ -16,7 +16,7 @@ public abstract class Encrypter {
         characterArray(data);
         return new_data.toString();
     }
-    public static void characterArray(String data)
+    public static void characterArray(String data) //Function to convert String to char Array
     {
         for (int i = 0; i < 28; i++)
         {
