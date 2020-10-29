@@ -43,31 +43,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void encrypt(View view) {
-        rawDataProcess(true);
+        raw_data = getRawData();
+        processed_data = Encrypter.encrypt(raw_data);
+        setProcessedData();
+        Toast.makeText(this, "encrypted", Toast.LENGTH_LONG).show();
+
     }
 
     public void decrypt(View view) {
-        rawDataProcess(false);
-    }
-    public void rawDataProcess(boolean encryption) //Function to process raw data for encryption or decryption
-    {
         raw_data = getRawData();
-        if(encryption)
-        {
-            processed_data = Encrypter.encrypt(raw_data);
-            setProcessedData();
-            Toast.makeText(this, "encrypted", Toast.LENGTH_LONG).show();
-        }
-        else
-        {
-            processed_data = Encrypter.decrypt(raw_data);
-            setProcessedData();
-            Toast.makeText(this, "decrypted", Toast.LENGTH_LONG).show();
-        }
-
-
-
+        processed_data = Encrypter.decrypt(raw_data);
+        setProcessedData();
+        Toast.makeText(this, "decrypted", Toast.LENGTH_LONG).show();
     }
+
 
     public void copy(View view) {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
