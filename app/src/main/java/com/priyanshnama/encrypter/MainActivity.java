@@ -43,18 +43,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void encrypt(View view) {
-        raw_data = getRawData();
-        processed_data = Encrypter.encrypt(raw_data);
-        setProcessedData();
-        Toast.makeText(this, "encrypted", Toast.LENGTH_LONG).show();
+        rawDataProcess(true);
 
     }
 
     public void decrypt(View view) {
+        rawDataProcess(false);
+    }
+    public void rawDataProcess(boolean encrypt)
+    {
         raw_data = getRawData();
-        processed_data = Encrypter.decrypt(raw_data);
-        setProcessedData();
-        Toast.makeText(this, "decrypted", Toast.LENGTH_LONG).show();
+        if(encrypt)
+        {
+            processed_data = Encrypter.encrypt(raw_data);
+            setProcessedData();
+            Toast.makeText(this, "encrypted", Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            processed_data = Encrypter.decrypt(raw_data);
+            setProcessedData();
+            Toast.makeText(this, "decrypted", Toast.LENGTH_LONG).show();
+        }
     }
 
 
